@@ -8,6 +8,6 @@
         android:color="@color/button_green"/>
 
     <stroke android:color="@color/pay_button_stroke"
-        android:width="2px"
+        android:width="1px"
         />
 </shape>
