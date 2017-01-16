@@ -8,8 +8,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.administrator.nopay.R;
+import com.example.administrator.nopay.utils.MessageHolder;
 
-public class FinishPay extends AppCompatActivity {
+public class FinishPayActivity extends AppCompatActivity {
     private Button mBtnConfirmPay;
     private TextView mTvMoney;
     private TextView mTvName;
@@ -26,8 +27,9 @@ public class FinishPay extends AppCompatActivity {
         String money = intent.getStringExtra("number");
         mBtnConfirmPay = (Button)findViewById(R.id.btn_confirm_pay);
         mTvMoney = (TextView)findViewById(R.id.tv_money);
-        mTvMoney.setText(money+".00");
+        mTvMoney.setText(money);
         mTvName = (TextView)findViewById(R.id.tv_name);
+        mTvName.setText(getString(R.string.who_get_money, MessageHolder.getInstance().getUserName()));
 
 
         mBtnConfirmPay.setOnClickListener(new View.OnClickListener() {

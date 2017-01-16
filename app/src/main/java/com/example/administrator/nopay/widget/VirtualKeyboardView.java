@@ -1,4 +1,4 @@
-package com.example.administrator.nopay;
+package com.example.administrator.nopay.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
 
+import com.example.administrator.nopay.R;
 import com.example.administrator.nopay.adapter.KeyBoardAdapter;
 
 import java.util.ArrayList;

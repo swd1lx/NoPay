@@ -14,4 +14,6 @@
     <color name="black">#000000</color>
     <color name="money">#4E4E4E</color>
     <color name="pay_button_stroke">#318730</color>
+    <color name="dialog_bg_gray">#99000000</color>
+    <color name="dialog_text_white">#ccFFFFFF</color>
 </resources>

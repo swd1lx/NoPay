@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">NoPay</string>
 
-    <string name="user_name">向个人用户"150"转账</string>
+    <string name="user_name">向个人用户\"%s\"转账</string>
+    <string name="who_get_money">收款方%s</string>
 </resources>

@@ -1,12 +1,12 @@
 package com.example.administrator.nopay.ui;
 
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputType;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -15,11 +15,15 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.administrator.nopay.R;
-import com.example.administrator.nopay.VirtualKeyboardView;
+import com.example.administrator.nopay.utils.MessageHolder;
+import com.example.administrator.nopay.widget.PopEnterPassword;
+import com.example.administrator.nopay.widget.VirtualKeyboardView;
+import com.example.administrator.nopay.widget.WaitDialog;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -42,6 +46,9 @@ public class PayActivity extends AppCompatActivity {
 
     private VirtualKeyboardView virtualKeyboardView;
     private Handler handler;
+    private String totalMoney;
+    private WaitDialog waitDialog;
+    private ImageView mIvBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,9 +74,11 @@ public class PayActivity extends AppCompatActivity {
         handler = new Handler();
         scrollView = (ScrollView)findViewById(R.id.sl_main);
         mButton = (Button)findViewById(R.id.btn_confirm_pay);
+        mIvBack = (ImageView)findViewById(R.id.iv_back);
         mTvUserName = (TextView)findViewById(R.id.tv_user_name);
-        mTvUserName.setText("向个人用户\"150\"转账");
+        mTvUserName.setText(getString(R.string.user_name, MessageHolder.getInstance().getUserName()));
         mEtMoney = (EditText)findViewById(R.id.et_money);
+        waitDialog = new WaitDialog(PayActivity.this);
 
         // 设置不调用系统键盘
         if (android.os.Build.VERSION.SDK_INT <= 10) {
@@ -111,9 +120,35 @@ public class PayActivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PayActivity.this,FinishPay.class);
-                intent.putExtra("number",mEtMoney.getText().toString());
-                startActivity(intent);
+                waitDialog.show();
+                waitDialog.setListener(new WaitDialog.OnTimeFinishListener() {
+                    @Override
+                    public void onImageClick() {
+                        String etMoney = mEtMoney.getText().toString();
+                        if (etMoney.contains(".")){
+                            if (etMoney.split("\\.")[1].length()==1){
+                                totalMoney = etMoney+"0";
+                            } else if (etMoney.split("\\.")[1].length()==2){
+                                totalMoney = etMoney;
+                            }
+                        } else {
+                            totalMoney = etMoney+".00";
+                        }
+
+                        PopEnterPassword popEnterPassword = new PopEnterPassword(PayActivity.this,MessageHolder.getInstance().getUserName(),totalMoney);
+
+                        // 显示窗口
+                        popEnterPassword.showAtLocation(PayActivity.this.findViewById(R.id.btn_confirm_pay),
+                                Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); // 设置layout在PopupWindow中显示的位置
+                    }
+                });
+            }
+        });
+
+        mIvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 

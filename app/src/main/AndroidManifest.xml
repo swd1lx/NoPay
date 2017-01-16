@@ -18,7 +18,7 @@
         <activity
             android:name=".ui.PayActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity android:name=".ui.FinishPay"></activity>
+        <activity android:name=".ui.FinishPayActivity"></activity>
     </application>
 
 </manifest>

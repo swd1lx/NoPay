@@ -86,7 +86,7 @@
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
-            <com.example.administrator.nopay.VirtualKeyboardView
+            <com.example.administrator.nopay.widget.VirtualKeyboardView
                 android:visibility="invisible"
                 android:layout_gravity="bottom"
                 android:layout_marginTop="30dp"
