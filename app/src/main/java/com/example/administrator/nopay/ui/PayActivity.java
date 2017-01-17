@@ -113,7 +113,12 @@ public class PayActivity extends AppCompatActivity {
         mEtMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                handler.postDelayed(runnable, 400);
+                virtualKeyboardView.setFocusable(true);
+                virtualKeyboardView.setFocusableInTouchMode(true);
+
+                virtualKeyboardView.startAnimation(enterAnim);
+                virtualKeyboardView.setVisibility(View.VISIBLE);
+                handler.postDelayed(runnable, 200);
             }
         });
 
@@ -152,17 +157,18 @@ public class PayActivity extends AppCompatActivity {
             }
         });
 
+        virtualKeyboardView.setFocusable(true);
+        virtualKeyboardView.setFocusableInTouchMode(true);
+
+        virtualKeyboardView.startAnimation(enterAnim);
+        virtualKeyboardView.setVisibility(View.VISIBLE);
         handler.postDelayed(runnable, 400);
     }
 
     Runnable runnable=new Runnable(){
         @Override
         public void run() {
-            virtualKeyboardView.setFocusable(true);
-            virtualKeyboardView.setFocusableInTouchMode(true);
 
-            virtualKeyboardView.startAnimation(enterAnim);
-            virtualKeyboardView.setVisibility(View.VISIBLE);
             scrollView.fullScroll(ScrollView.FOCUS_DOWN);
             //要做的事情，这里再次调用此Runnable对象，以实现每两秒实现一次的定时器操作
 //            handler.postDelayed(this, 200);

@@ -16,4 +16,8 @@
     <color name="pay_button_stroke">#318730</color>
     <color name="dialog_bg_gray">#99000000</color>
     <color name="dialog_text_white">#ccFFFFFF</color>
+
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#00000000</color>
 </resources>

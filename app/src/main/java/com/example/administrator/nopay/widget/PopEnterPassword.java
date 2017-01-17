@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.example.administrator.nopay.R;
 import com.example.administrator.nopay.ui.FinishPayActivity;
+import com.example.administrator.nopay.ui.XiaoYuActivity;
+import com.example.administrator.nopay.utils.MessageHolder;
 
 
 /**
@@ -70,9 +72,15 @@ public class PopEnterPassword extends PopupWindow {
                     @Override
                     public void onImageClick() {
                         dismiss();
-                        Intent intent = new Intent(context, FinishPayActivity.class);
-                        intent.putExtra("number",mTextAmount);
-                        mContext.startActivity(intent);
+
+                        if (MessageHolder.getInstance().getUserName().equals("午饭")){
+                            Intent intent = new Intent(context, XiaoYuActivity.class);
+                            mContext.startActivity(intent);
+                        }else {
+                            Intent intent = new Intent(context, FinishPayActivity.class);
+                            intent.putExtra("number",mTextAmount);
+                            mContext.startActivity(intent);
+                        }
                     }
                 });
             }

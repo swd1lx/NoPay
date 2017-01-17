@@ -14,8 +14,10 @@ import com.example.administrator.nopay.utils.MessageHolder;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    private final static int SCANNIN_GREQUEST_CODE = 1;
     private EditText mEtEdit;
     private Button mBtnSearch;
+    private Button mBtnCode;
     private MediaPlayer mp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mEtEdit = (EditText) findViewById(R.id.edit);
         mBtnSearch = (Button)findViewById(R.id.button);
+        mBtnCode = (Button)findViewById(R.id.btn_code);
+        mBtnCode.setOnClickListener(this);
         mBtnSearch.setOnClickListener(this);
     }
 
@@ -40,6 +44,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             MessageHolder.getInstance().setUserName(mEtEdit.getText().toString());
             Intent intent = new Intent(MainActivity.this,PayActivity.class);
             startActivity(intent);
+            return;
+        }
+
+        if (view==mBtnCode){
+            Intent intent = new Intent();
+            intent.setClass(MainActivity.this, MipcaActivityCapture.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case SCANNIN_GREQUEST_CODE:
+                if(resultCode == RESULT_OK){
+                    Bundle bundle = data.getExtras();
+                    //显示扫描到的内容
+                    mEtEdit.setText(bundle.getString("result"));
+                    //显示
+//                    mImageView.setImageBitmap((Bitmap) data.getParcelableExtra("bitmap"));
+                }
+                break;
         }
     }
 }

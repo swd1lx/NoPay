@@ -3,4 +3,5 @@
 
     <string name="user_name">向个人用户\"%s\"转账</string>
     <string name="who_get_money">收款方%s</string>
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
 </resources>
