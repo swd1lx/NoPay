@@ -58,7 +58,16 @@ final class CameraConfigurationManager {
     Display display = manager.getDefaultDisplay();
     screenResolution = new Point(display.getWidth(), display.getHeight());
     Log.d(TAG, "Screen resolution: " + screenResolution);
-    cameraResolution = getCameraResolution(parameters, screenResolution);
+
+    Point screenResolutionForCamera = new Point();
+    screenResolutionForCamera.x = screenResolution.x;
+    screenResolutionForCamera.y = screenResolution.y;
+    if (screenResolution.x < screenResolution.y) {
+      screenResolutionForCamera.x = screenResolution.y;
+      screenResolutionForCamera.y = screenResolution.x;
+    }
+
+    cameraResolution = getCameraResolution(parameters, screenResolutionForCamera);
     Log.d(TAG, "Camera resolution: " + screenResolution);
   }
 
@@ -147,7 +156,7 @@ final class CameraConfigurationManager {
         continue;
       }
 
-      int newDiff = Math.abs(newX - screenResolution.x) + Math.abs(newY - screenResolution.y);
+      int newDiff = Math.abs(newY - screenResolution.x) + Math.abs(newX - screenResolution.y);
       if (newDiff == 0) {
         bestX = newX;
         bestY = newY;
