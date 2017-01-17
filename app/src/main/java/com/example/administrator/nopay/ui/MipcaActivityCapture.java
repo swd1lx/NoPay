@@ -43,7 +43,7 @@ public class MipcaActivityCapture extends Activity implements Callback {
 	private boolean playBeep;
 	private static final float BEEP_VOLUME = 0.10f;
 	private boolean vibrate;
-
+	private MediaPlayer mp;
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,16 @@ public class MipcaActivityCapture extends Activity implements Callback {
 		});
 		hasSurface = false;
 		inactivityTimer = new InactivityTimer(this);
+
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				mp = MediaPlayer.create(MipcaActivityCapture.this, R.raw.qrcode_completed);
+				mp.start();
+				Intent intent = new Intent(MipcaActivityCapture.this,PayActivity.class);
+				startActivity(intent);
+			}
+		},4000);
 	}
 
 	@Override

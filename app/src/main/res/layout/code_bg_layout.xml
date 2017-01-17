@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:background="@color/dialog_bg_gray"
+    android:layout_height="90dp">
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="1dp"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content">
+        
+        <ImageView
+            android:id="@+id/iv_code_1"
+            android:layout_centerHorizontal="true"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/code_bg_1"/>
+        
+        <TextView
+            android:textColor="@color/dialog_text_white"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/iv_code_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="14sp"
+            android:text="扫码"/>
+        
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_code_2"
+            android:layout_centerHorizontal="true"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/code_bg_2"/>
+
+        <TextView
+            android:textColor="@color/dialog_text_white"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/iv_code_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="14sp"
+            android:text="封面"/>
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content">
+        
+        <ImageView
+            android:id="@+id/iv_code_3"
+            android:layout_centerHorizontal="true"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/code_bg_3"/>
+
+        <TextView
+            android:textColor="@color/dialog_text_white"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/iv_code_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="14sp"
+            android:text="街景"/>
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content">
+        
+        <ImageView
+            android:id="@+id/iv_code_4"
+            android:layout_centerHorizontal="true"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/code_bg_4"/>
+
+        <TextView
+            android:textColor="@color/dialog_text_white"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/iv_code_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="14sp"
+            android:text="翻译"/>
+        
+    </RelativeLayout>
+</LinearLayout>

@@ -155,7 +155,8 @@ public final class ViewfinderView extends View {
 				paint);
 		canvas.drawRect(0, frame.bottom + 1, width, height, paint);
 
-
+//		Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.layout.code_bg_layout);
+//		canvas.drawBitmap(bitmap, 0, frame.bottom + 1, paint);
 
 		if (resultBitmap != null) {
 			// Draw the opaque result bitmap over the scanning rectangle

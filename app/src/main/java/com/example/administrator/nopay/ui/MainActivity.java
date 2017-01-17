@@ -35,24 +35,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view == mBtnSearch){
-            if (mEtEdit.getText().toString().equals("")){
-                return;
-            }
-            mp = MediaPlayer.create(this, R.raw.qrcode_completed);
-            mp.start();
-
-            MessageHolder.getInstance().setUserName(mEtEdit.getText().toString());
-            Intent intent = new Intent(MainActivity.this,PayActivity.class);
-            startActivity(intent);
+            toPayActivity();
             return;
         }
 
         if (view==mBtnCode){
             Intent intent = new Intent();
+            MessageHolder.getInstance().setUserName(mEtEdit.getText().toString());
             intent.setClass(MainActivity.this, MipcaActivityCapture.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
         }
+    }
+
+    private void toPayActivity() {
+        if (mEtEdit.getText().toString().equals("")){
+            return;
+        }
+        mp = MediaPlayer.create(this, R.raw.qrcode_completed);
+        mp.start();
+
+        MessageHolder.getInstance().setUserName(mEtEdit.getText().toString());
+        Intent intent = new Intent(MainActivity.this,PayActivity.class);
+        startActivity(intent);
     }
 
     @Override

@@ -8,7 +8,6 @@
         android:layout_height="fill_parent" >
 
         <SurfaceView
-            android:layout_below="@+id/include1"
             android:id="@+id/preview_view"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -16,7 +15,6 @@
 
         <com.example.administrator.nopay.zxing.view.ViewfinderView
             android:id="@+id/viewfinder_view"
-            android:layout_below="@+id/include1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -26,6 +24,12 @@
             android:layout_height="50dp"
             android:layout_alignParentTop="true"
             layout="@layout/title_code" />
+
+        <include
+            android:layout_width="fill_parent"
+            android:layout_height="90dp"
+            android:layout_alignParentBottom="true"
+            layout="@layout/code_bg_layout"/>
     </RelativeLayout>
 
 </FrameLayout>
